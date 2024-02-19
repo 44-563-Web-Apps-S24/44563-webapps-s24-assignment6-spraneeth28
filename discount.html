@@ -21,6 +21,19 @@
     </form>
     
     <p id="discountresult">The text will be replaced</p>
+    <form>
+        <input type="radio" id="sum1" name="sum1" vale="sum" onclick="chooseOp()">
+        <label for="sum1">sum</label><br>
+
+        <input type="radio" id="multiply1" name="multiply1" vale="multiply" onclick="chooseOp()">
+        <label for="multiply1">mult</label><br>
+
+        <input type="radio" id="exponent1" name="exponent1" vale="exponent" onclick="chooseOp()">
+        <label for="exponent1">exp</label><br>
+
+
+    </form>
+    <p id="result 3">The text will be replaced</p>
 
     <script>
         function discount(){
@@ -34,6 +47,25 @@
             myOutput+=`${discountPercent}% is ${totalCost.toFixed(1)}; `;
         }
         document.getElementById("discountresult").innerHTML="Totals are: "+myOutput;
+    }
+
+    function chooseOp(){
+        let inputPrice=parseFloat(document.getElementById("priceOne").value);
+        let inputDiscount=parseFloat(document.getElementById("discountOne").value);
+        let op;
+
+        if(document.getElementById("sum1").checked){
+            op=`Sum of ${inputPrice} and ${inputDiscount} is ${inputPrice+inputDiscount}`;
+            document.getElementById("result 3").innerHTML=op;
+        }
+        else if(document.getElementById("multiply1").checked){
+            op=`Product of ${inputPrice} and ${inputDiscount} is ${inputPrice*inputDiscount}`;
+            document.getElementById("result 3").innerHTML=op;
+        }
+        else if(document.getElementById("exponent1").checked){
+            op=`Exponent of ${inputPrice} to the power of ${inputDiscount} is ${Math.pow(inputPrice,inputDiscount)}`;
+            document.getElementById("result 3").innerHTML=op;
+        }
     }
     </script>
 </body>
