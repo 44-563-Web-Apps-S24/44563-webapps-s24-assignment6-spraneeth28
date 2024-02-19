@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <title>Packing html</title>
+    </head>
+    <body>
+        <h1>
+            Praneeth Shanigaram packs for a trip
+        </h1>
+        <form>
+            <input type="checkbox" id="packOne" name="packname"   
+            value="True">
+            <label for="cb1_cheese">Pack light</label></br>
+        
+            <input type="checkbox" id="carryOne" name="carryname" 
+            value="True">
+            <label for="cb1_olive">Carry on</label></br>
+        
+            <input type="checkbox" id="tabletOne" name="tabletname"   
+            value="False">
+            <label for="cb1_onion">Tablet</label></br><br>
+      
+            <input type="button" onclick="selectPack()" value="Select for packing">
+        </form><br><br>
+
+        <form>
+            <label for="monthOne">Enter travel month </label>
+        <input type ="text" id="monthOne" name="month1" value="May"> <br><br>
+
+        <label for="priceOne">Enter price</label>
+        <input type ="number" id="priceOne" name="priceOne"> <br><br>
+
+        <input type="button" onclick="updatePack()" value="Update the pack">
+        </form>
+
+        <p id="result trip">The text will be replaced</p>
+
+        <script>
+            let my_pack={};
+            function selectPack(){
+                my_pack={};
+                my_pack.light=document.getElementById("packOne").checked;
+                my_pack.carry=document.getElementById("carryOne").checked;
+                my_pack.tablet=document.getElementById("tabletOne").checked;
+                document.getElementById("result trip").innerHTML=JSON.stringify(my_pack);
+            }
+
+            function updatePack(){
+                let inputmonth=document.getElementById("monthOne").value;
+                let inputPrice=document.getElementById("priceOne").value;
+                my_pack["month"]=inputmonth;
+                my_pack["price"]=inputPrice;
+                document.getElementById("result trip").innerHTML=JSON.stringify(my_pack);
+            }
+        </script>
+    </body>
+
+</hmtl>
