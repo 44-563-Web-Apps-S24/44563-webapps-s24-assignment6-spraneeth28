@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Discount html</title>
+</head>
+
+<body>
+    <h1>Praneeth Shanigaram discout calculations</h1>
+    <form>
+        <label for="priceOne">Enter price per </label>
+        <input type ="number" id="priceOne" name="priceOne" value=10> <br><br>
+    
+        <label for="itemsOne">Enter the number of items </label>
+        <input type ="number" id="itemsOne" name="itemsOne" value=9> <br><br>
+    
+        <label for="discountOne">Enter the discount percent </label>
+        <input type ="number" id="discountOne" name="discountOne" value=5> <br><br>
+    
+        <input type="button" onclick="discount()" value="Show total">
+    </form>
+    
+    <p id="discountresult">The text will be replaced</p>
+
+    <script>
+        function discount(){
+        let Price1=parseFloat(document.getElementById("priceOne").value);
+        let items1=parseInt(document.getElementById("itemsOne").value);
+        let Discount1=parseFloat(document.getElementById("discountOne").value);
+        let myOutput="";
+        for(let i=0;i<5;i++){
+            let discountPercent=Discount1 + i;
+            let totalCost=Price1*items1*(1-discountPercent/100);
+            myOutput+=`${discountPercent}% is ${totalCost.toFixed(1)}; `;
+        }
+        document.getElementById("discountresult").innerHTML="Totals are: "+myOutput;
+    }
+    </script>
+</body>
+
+</html>
