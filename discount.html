@@ -28,17 +28,12 @@
     
     <p id="discountresult">The text will be replaced</p>
     <form>
-        <input type="radio" id="sum1" name="sum1" vale="sum" onclick="chooseOp()">
-        <label for="sum1">sum</label><br>
-
-        <input type="radio" id="multiply1" name="multiply1" vale="multiply" onclick="chooseOp()">
-        <label for="multiply1">mult</label><br>
-
-        <input type="radio" id="exponent1" name="exponent1" vale="exponent" onclick="chooseOp()">
-        <label for="exponent1">exp</label><br>
-
-
-    </form>
+        <label><input type="radio" name="operation" value="sum" onclick="chooseOp()" >Sum</label><br>
+        <label><input type="radio" name="operation" value="multiply" onclick="chooseOp()">Multiply</label><br>
+        <label><input type="radio" name="operation" value="exponent" onclick="chooseOp()">Exponent</label><br>
+      </form>
+    
+    <form>
     <p id="result 3">The text will be replaced</p>
 
     <script>
@@ -54,25 +49,29 @@
         }
         document.getElementById("discountresult").innerHTML="Totals are: "+myOutput;
     }
+    function chooseOp() {
+    let price = parseFloat(document.getElementById('priceOne').value);
+    let discount = parseFloat(document.getElementById('discountOne').value);
+    let selectedOp = document.querySelector('input[name="operation"]:checked').value;
 
-    function chooseOp(){
-        let inputPrice=parseFloat(document.getElementById("priceOne").value);
-        let inputDiscount=parseFloat(document.getElementById("discountOne").value);
-        let op;
-
-        if(document.getElementById("sum1").checked){
-            op=`Sum of ${inputPrice} and ${inputDiscount} is ${inputPrice+inputDiscount}`;
-            document.getElementById("result 3").innerHTML=op;
-        }
-        else if(document.getElementById("multiply1").checked){
-            op=`Product of ${inputPrice} and ${inputDiscount} is ${inputPrice*inputDiscount}`;
-            document.getElementById("result 3").innerHTML=op;
-        }
-        else if(document.getElementById("exponent1").checked){
-            op=`Exponent of ${inputPrice} to the power of ${inputDiscount} is ${Math.pow(inputPrice,inputDiscount)}`;
-            document.getElementById("result 3").innerHTML=op;
-        }
+    let result;
+    switch (selectedOp) {
+      case 'sum':
+        result = price + discount;
+        document.getElementById('result 3').innerHTML = `Sum of ${price} and ${discount} is ${result}`;
+        break;
+      case 'multiply':
+        result = price * discount;
+        document.getElementById('result 3').innerHTML = `Product of ${price} and ${discount} is ${result}`;
+        break;
+      case 'exponent':
+        result = Math.pow(price, discount);
+        document.getElementById('result 3').innerHTML = `Exponent of ${price} to the power of ${discount} is ${result}`;
+        break;
+      default:
+        break;
     }
+  }
     </script>
 </body>
 
